@@ -1,0 +1,42 @@
+﻿@model SearchableDropdown.Models.Drop
+
+@{
+    ViewData["Title"] = "ShowList";
+}
+
+<h1>ShowList</h1>
+
+<h4>Drop</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ShowList">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AccountClassTitle" class="control-label"></label>
+                <select id="ddl" asp-for="AccountClassId" asp-items="@ViewBag.List"></select>
+                <span asp-validation-for="AccountClassTitle" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function()
+        {
+            $("#ddl").select2();
+        });
+    </script>
+}
+
